@@ -1,0 +1,31 @@
+{
+	"name": "contacts-crm",
+	"version": "1.0.0",
+	"description": "Rest-APIs to manage Contacts",
+	"main": "app.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "tsc --build",
+		"start": "node ./dist/app.js",
+		"dev": "nodemon ./src/app.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MahmoudSafan/contacts-CRM.git"
+	},
+	"author": "Mahmoud Safan",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/MahmoudSafan/contacts-CRM/issues"
+	},
+	"homepage": "https://github.com/MahmoudSafan/contacts-CRM#readme",
+	"dependencies": {
+		"express": "^4.21.2"
+	},
+	"devDependencies": {
+		"@types/express": "^5.0.0",
+		"nodemon": "^3.1.9",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.7.3"
+	}
+}
