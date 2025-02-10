@@ -23,16 +23,16 @@ export class Audit {
 	newData: Partial<Contact>;
 
 	@Column({ nullable: true })
-	contactId: string; // Nullable for transactions
+	contactId: string;
 
 	@Column({ nullable: true })
-	fromContactId: string; // For balance transfers
+	fromContactId: string;
 
 	@Column({ nullable: true })
-	toContactId: string; // For balance transfers
+	toContactId: string;
 
 	@Column({ type: "decimal", nullable: true })
-	amount: number; // For balance transfers
+	amount: number;
 
 	@CreateDateColumn()
 	createdAt: Date;

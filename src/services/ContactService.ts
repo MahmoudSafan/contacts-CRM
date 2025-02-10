@@ -45,7 +45,6 @@ export class ContactService {
 
 		const updatedContact = await this.contactRepo.update(id, data);
 
-		// Audit log
 		const auditLog: Partial<Audit> = {
 			type: "CONTACT",
 			action: "UPDATE",
@@ -68,7 +67,6 @@ export class ContactService {
 
 		await this.contactRepo.softDelete(id);
 
-		// Audit log
 		await this.auditRepo.create({
 			type: "CONTACT",
 			action: "DELETE",

@@ -8,14 +8,13 @@ export const AppDataSource = new DataSource({
 	host: process.env.DB_HOST || "localhost",
 	port: parseInt(process.env.DB_PORT || "5432"),
 	username: process.env.DB_USER || "postgres",
-	password: process.env.DB_PASSWORD || "2012000",
+	password: process.env.DB_PASSWORD || "admin",
 	database: process.env.DB_NAME || "crm",
 	entities: [Contact, Audit],
 	synchronize: true,
 	logging: false,
 });
 
-// Initialize database connection
 AppDataSource.initialize().catch((err) => {
 	console.error("Database connection failed:", err);
 });

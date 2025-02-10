@@ -6,6 +6,6 @@ export const asyncHandler =
 		try {
 			await fn(req, res, next);
 		} catch (error) {
-			next(error); // Pass errors to the global error handler
+			next(error);
 		}
 	};

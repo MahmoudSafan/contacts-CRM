@@ -9,7 +9,6 @@ export const errorHandler: (
 ) => void = (err: Error, req: Request, res: Response, next: NextFunction) => {
 	console.error("Error:", err.message);
 
-	// Handle custom errors
 	if (err instanceof AppError) {
 		return res.status(err.statusCode).json({
 			message: err.message,
@@ -17,6 +16,5 @@ export const errorHandler: (
 		});
 	}
 
-	// Handle generic errors
 	res.status(500).json({ message: "Internal Server Error" });
 };

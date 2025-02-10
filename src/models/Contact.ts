@@ -5,7 +5,6 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	DeleteDateColumn,
-	Decimal128,
 } from "typeorm";
 
 @Entity()
