@@ -11,17 +11,19 @@ export class ContactRepository {
 
 	async findAll(filters?: GetContactsQueryDto): Promise<Contact[]> {
 		const query = this.contactRepository.createQueryBuilder("contact");
-		console.log("filters", filters);
+
 		if (filters?.company) {
 			query.andWhere("contact.company = :company", {
 				company: filters.company,
 			});
 		}
 
-		if (filters?.isDeleted !== undefined) {
-			query.andWhere("contact.isDeleted = :isDeleted", {
-				isDeleted: filters.isDeleted,
+		if (filters?.is_deleted !== undefined) {
+			query.andWhere("contact.is_deleted = :is_deleted", {
+				is_deleted: filters.is_deleted,
 			});
+		} else {
+			query.andWhere("contact.is_deleted = false");
 		}
 
 		if (filters?.createdAfter) {
@@ -29,7 +31,6 @@ export class ContactRepository {
 				createdAfter: new Date(filters.createdAfter),
 			});
 		}
-
 		return query.getMany();
 	}
 
@@ -47,6 +48,8 @@ export class ContactRepository {
 	}
 
 	async softDelete(id: string): Promise<void> {
-		await this.contactRepository.softDelete(id);
+		await this.contactRepository.update(id, {
+			is_deleted: true,
+		});
 	}
 }

@@ -11,10 +11,7 @@ export const AppDataSource = new DataSource({
 	password: process.env.DB_PASSWORD || "admin",
 	database: process.env.DB_NAME || "crm",
 	entities: [Contact, Audit],
+	migrations: ["src/migrations/*.ts"],
 	synchronize: true,
 	logging: false,
-});
-
-AppDataSource.initialize().catch((err) => {
-	console.error("Database connection failed:", err);
 });

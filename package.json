@@ -4,10 +4,13 @@
 	"description": "Rest-APIs to manage Contacts",
 	"main": "app.ts",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "jest",
 		"build": "tsc --build",
 		"start": "node ./dist/server.js",
-		"dev": "nodemon ./src/server.ts"
+		"dev": "nodemon ./src/server.ts",
+		"migration:generate": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d src/config/database.ts",
+		"migration:run": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d src/config/database.ts",
+		"migration:revert": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:revert -d src/config/database.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -29,7 +32,13 @@
 	},
 	"devDependencies": {
 		"@types/express": "^5.0.0",
+		"@types/jest": "^29.5.14",
+		"@types/supertest": "^6.0.2",
+		"jest": "^29.7.0",
+		"mocha": "^11.1.0",
 		"nodemon": "^3.1.9",
+		"supertest": "^7.0.0",
+		"ts-jest": "^29.2.5",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.7.3"
 	}

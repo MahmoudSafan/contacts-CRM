@@ -29,8 +29,8 @@ export class ContactService {
 
 		const contact = await this.contactRepo.save(data);
 
-		// Audit log
 		await this.auditRepo.create({
+			type: "CONTACT",
 			action: "CREATE",
 			newData: contact,
 			contactId: contact.id,

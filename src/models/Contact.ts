@@ -28,14 +28,11 @@ export class Contact {
 	balance?: number;
 
 	@Column({ default: false })
-	isDeleted?: boolean;
+	is_deleted?: boolean;
 
 	@CreateDateColumn()
-	createdAt!: Date;
+	createdAt?: Date;
 
 	@UpdateDateColumn()
 	updatedAt?: Date;
-
-	@DeleteDateColumn()
-	deletedAt?: Date;
 }

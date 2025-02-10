@@ -7,7 +7,7 @@ export class GetContactsQueryDto {
 
 	@IsBoolean()
 	@IsOptional()
-	isDeleted?: boolean;
+	is_deleted?: boolean;
 
 	@IsString()
 	@IsOptional()

@@ -3,9 +3,13 @@ import { plainToInstance } from "class-transformer";
 import { validate, ValidationError } from "class-validator";
 import { AppError } from "../utils/AppError";
 
-export const validateRequest = (dtoClass: any) => {
+export const validateRequest = (
+	DtoClass: any,
+	validateTarget: "body" | "params" = "body"
+) => {
 	return async (req: Request, res: Response, next: NextFunction) => {
-		const dtoInstance = plainToInstance(dtoClass, req.body);
+		const target = validateTarget === "body" ? req.body : req.params;
+		const dtoInstance = plainToInstance(DtoClass, target);
 		const errors: ValidationError[] = await validate(dtoInstance);
 
 		if (errors.length > 0) {
@@ -15,7 +19,12 @@ export const validateRequest = (dtoClass: any) => {
 			return next(new AppError("Validation failed", 400, errorMessages));
 		}
 
-		req.body = dtoInstance;
+		if (validateTarget === "body") {
+			req.body = dtoInstance;
+		} else {
+			req.params = dtoInstance as unknown as Record<string, any>;
+		}
+
 		next();
 	};
 };
