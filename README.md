@@ -67,10 +67,17 @@ npm run migration:run  # For local development
 docker-compose up --build
 ```
 
-This will: ✅ Start the **PostgreSQL database**\
+This will: 
+✅ Start the **PostgreSQL database**\
 ✅ Run **migrations**\
 ✅ Start the **Express server**
 
+---
+### **Option 2: using npm**
+
+```sh
+npm run dev
+```
 ---
 
 ## 📜 API Documentation
