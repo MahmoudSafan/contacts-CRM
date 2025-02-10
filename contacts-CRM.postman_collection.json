@@ -1,0 +1,590 @@
+{
+	"info": {
+		"_postman_id": "67547e9c-8506-481d-8f1a-a7acdaa9a358",
+		"name": "contacts-CRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16568273",
+		"_collection_link": "https://mahmoud-safan-squad.postman.co/workspace/My-Workspace~7f8b3637-bdf7-4c1d-8f5d-96f9995fb231/collection/16568273-67547e9c-8506-481d-8f1a-a7acdaa9a358?action=share&source=collection_link&creator=16568273"
+	},
+	"item": [
+		{
+			"name": "Create Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"mahmoud\",\n    \"last_name\": \"safan\",\n    \"email\": \"mahmoud2@example.com\",\n    \"company\": \"Eduncy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-route}}/contacts",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"company\": \"Tech Corp\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-route}}/contacts",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "259"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"103-fu0ZEZltlhMMasKILbDIY0VoN70\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 03:42:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"company\": \"Tech Corp\",\n    \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n    \"balance\": \"0\",\n    \"isDeleted\": false,\n    \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n    \"updatedAt\": \"2025-02-10T03:42:00.427Z\",\n    \"deletedAt\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Transfer Balance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from_contact_id\": \"510bdeac-502f-4ccd-b410-328c284e31e9\",\n    \"to_contact_id\": \"ad502f76-afd3-4509-b95f-c7f09889acda\",\n    \"amount\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-route}}/contacts/transfer",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts",
+						"transfer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"from_contact_id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n    \"to_contact_id\": \"e3847d67-9aa0-4504-8cbd-898ede9bfa5c\",\n    \"amount\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-route}}/contacts/transfer",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts",
+								"transfer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "46"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2e-OlvpIn+rlcCf1yVF/jZ5adjShrQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 04:33:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Balance transferred successfully\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Conatcts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-route}}/contacts?is_deleted=false",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts"
+					],
+					"query": [
+						{
+							"key": "is_deleted",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Conatcts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-route}}/contacts?company=Tech Corp",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "company",
+									"value": "Tech Corp"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "261"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"105-KMEJewgzYvdSDLkE5m6E3ZY9yTY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 04:08:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Doe\",\n        \"email\": \"john@example.com\",\n        \"company\": \"Tech Corp\",\n        \"balance\": \"0\",\n        \"isDeleted\": false,\n        \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n        \"updatedAt\": \"2025-02-10T03:42:00.427Z\",\n        \"deletedAt\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Conatct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-route}}/contacts/:id",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "e8ed7a2f-2a16-424b-82dd-eb020cf8c61a"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-route}}/contacts/:id",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7eb4c97b-2051-42fd-989c-9df55e686a69"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "259"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"103-4xoM8ndc8oFyYjjLkg32g+2BcRY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 04:01:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"company\": \"Tech Corp\",\n    \"balance\": \"0\",\n    \"isDeleted\": false,\n    \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n    \"updatedAt\": \"2025-02-10T03:42:00.427Z\",\n    \"deletedAt\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Contact Audit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-route}}/contacts/:id/audit",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts",
+						":id",
+						"audit"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "510bdeac-502f-4ccd-b410-328c284e31e9"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base-route}}/contacts/:id/audit",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts",
+								":id",
+								"audit"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7eb4c97b-2051-42fd-989c-9df55e686a69"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3233"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ca1-Ju1qgmSMKrCFOgXZFHDL6AIchw8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 04:23:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"774f7050-3d6d-44f4-a2da-14d773eed364\",\n        \"action\": \"UPDATE\",\n        \"oldData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10.2\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:58.369Z\",\n            \"first_name\": \"john\"\n        },\n        \"newData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10.2\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:21:10.669Z\",\n            \"first_name\": \"John\"\n        },\n        \"contactId\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"createdAt\": \"2025-02-10T04:21:10.671Z\"\n    },\n    {\n        \"id\": \"519f53f2-34bd-4eb5-922c-8bc5b6d68189\",\n        \"action\": \"UPDATE\",\n        \"oldData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10.2\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:19.985Z\",\n            \"first_name\": \"John\"\n        },\n        \"newData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10.2\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:58.369Z\",\n            \"first_name\": \"john\"\n        },\n        \"contactId\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"createdAt\": \"2025-02-10T04:20:58.371Z\"\n    },\n    {\n        \"id\": \"48452432-9934-4d9f-90f2-c1afd1edd480\",\n        \"action\": \"UPDATE\",\n        \"oldData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:15.723Z\",\n            \"first_name\": \"John\"\n        },\n        \"newData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10.2\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:19.985Z\",\n            \"first_name\": \"John\"\n        },\n        \"contactId\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"createdAt\": \"2025-02-10T04:20:19.986Z\"\n    },\n    {\n        \"id\": \"423d325b-e655-40f4-9271-9e31a12f4517\",\n        \"action\": \"UPDATE\",\n        \"oldData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"0\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T03:42:00.427Z\",\n            \"first_name\": \"John\"\n        },\n        \"newData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"10\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T04:20:15.723Z\",\n            \"first_name\": \"John\"\n        },\n        \"contactId\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"createdAt\": \"2025-02-10T04:20:15.726Z\"\n    },\n    {\n        \"id\": \"e7d04835-65c1-462a-ac1f-fb0af6068fb2\",\n        \"action\": \"CREATE\",\n        \"oldData\": null,\n        \"newData\": {\n            \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n            \"email\": \"john@example.com\",\n            \"balance\": \"0\",\n            \"company\": \"Tech Corp\",\n            \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n            \"deletedAt\": null,\n            \"isDeleted\": false,\n            \"last_name\": \"Doe\",\n            \"updatedAt\": \"2025-02-10T03:42:00.427Z\",\n            \"first_name\": \"John\"\n        },\n        \"contactId\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n        \"createdAt\": \"2025-02-10T03:42:00.437Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Update Conatct",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\":\"john\",\n    \"balance\":20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-route}}/contacts/:id",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "510bdeac-502f-4ccd-b410--328c284e31e9"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"john\",\n    \"balance\":10.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-route}}/contacts/:id",
+							"host": [
+								"{{base-route}}"
+							],
+							"path": [
+								"contacts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "7eb4c97b-2051-42fd-989c-9df55e686a69"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "262"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"106-B8cMH8lMYGY/RZNjkdWV/FgnSug\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 10 Feb 2025 04:21:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"7eb4c97b-2051-42fd-989c-9df55e686a69\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"company\": \"Tech Corp\",\n    \"balance\": \"10.2\",\n    \"isDeleted\": false,\n    \"createdAt\": \"2025-02-10T03:42:00.427Z\",\n    \"updatedAt\": \"2025-02-10T04:21:10.669Z\",\n    \"deletedAt\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Contact",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base-route}}/contacts/:id",
+					"host": [
+						"{{base-route}}"
+					],
+					"path": [
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "510bdeac-502f-4ccd-b410-328c284e31e9"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base-route",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

@@ -6,11 +6,12 @@
 	"scripts": {
 		"test": "jest",
 		"build": "tsc --build",
-		"start": "node ./dist/server.js",
+		"start": "node ./dist/src/server.js",
 		"dev": "nodemon ./src/server.ts",
 		"migration:generate": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d src/config/database.ts",
 		"migration:run": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d src/config/database.ts",
-		"migration:revert": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:revert -d src/config/database.ts"
+		"migration:revert": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:revert -d src/config/database.ts",
+		"migrate:prod": "npx typeorm-ts-node-commonjs migration:run -d dist/src/config/database.js"
 	},
 	"repository": {
 		"type": "git",

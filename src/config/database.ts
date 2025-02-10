@@ -12,6 +12,7 @@ export const AppDataSource = new DataSource({
 	database: process.env.DB_NAME || "crm",
 	entities: [Contact, Audit],
 	migrations: ["src/migrations/*.ts"],
+	migrationsRun: false, // Disable auto-run migrations
 	synchronize: true,
 	logging: false,
 });
