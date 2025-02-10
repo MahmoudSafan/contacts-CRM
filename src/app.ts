@@ -1,13 +1,14 @@
-import express, { Request, Response, NextFunction } from "express";
-
+import express from "express";
+import contactRoutes from "./routes/contact.routes";
+import { loggingMiddleware } from "./middlewares/logging.middleware";
+import { errorHandler } from "./middlewares/error.middleware";
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-	res.send("hello world");
-});
+app.use(express.json());
+app.use(loggingMiddleware);
 
-const PORT = 3000;
+app.use("/", contactRoutes);
 
-app.listen(PORT, () => {
-	console.log(`server is running on port ${PORT}`);
-});
+app.use(errorHandler);
+
+export default app;
