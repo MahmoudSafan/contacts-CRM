@@ -1,8 +1,8 @@
 import request from "supertest";
-import app from "../../src/app";
-import { AppDataSource } from "../../src/config/database";
-import { Contact } from "../../src/models/Contact";
-import { clearDatabase } from "../../src/utils/clearDB";
+import app from "../src/app";
+import { AppDataSource } from "../src/config/database";
+import { Contact } from "../src/models/Contact";
+import { clearDatabase } from "../src/utils/clearDB";
 describe("Contacts API", () => {
 	beforeAll(async () => {
 		await AppDataSource.initialize();
